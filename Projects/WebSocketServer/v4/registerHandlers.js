@@ -6,9 +6,9 @@ import {
 const StartFunc = () => {
 
     RegisterJsonHandlerFunc({
-        key: "registerMachine",
+        key: "ledgerNames",
         handler: ({ ws, payload }) => {
-            console.log(payload.machineId);
+            console.log(payload.asArray.length);
         }
     });
 
@@ -19,6 +19,12 @@ const StartFunc = () => {
         }
     });
 
+    RegisterStringHandlerFunc({
+        key: "38:7c:76:0b:87:09",
+        handler: ({ ws }) => {
+            ws.send("getLedgerNames");
+        }
+    });
 };
 
 export default StartFunc;
