@@ -23,6 +23,7 @@ const ExecuteHandlerFunc = ({ ws, data }) => {
     } catch {
         payload = message;
         key = message;
+        console.log("message : ", message);
 
         handler = stringHandlers.get(key);
     };
