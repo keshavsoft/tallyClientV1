@@ -1,7 +1,7 @@
 import http from "http";
 import normalizePort from "./port.js";
 
-import startWebSocketServer from "./Projects/WebSocketServer/v7/entryFile.js";
+import startWebSocketServer from "./Projects/WebSocketServer/v8/entryFile.js";
 
 export default function startServer(app) {
     const port = normalizePort(process.env.PORT || 3025);
