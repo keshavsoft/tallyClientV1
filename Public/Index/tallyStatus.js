@@ -1,5 +1,5 @@
 const startFunc = async () => {
-    const tallyPromise = await fetch("/FromTally/V3/Status");
+    const tallyPromise = await fetch("/FromTally/V4/Status");
 
     if (tallyPromise.status === 200) {
         jFLocalDisplayShowtallyUpId();
