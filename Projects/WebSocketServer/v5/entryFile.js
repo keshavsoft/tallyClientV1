@@ -15,7 +15,6 @@ const StartFunc = (server) => {
     wss.on("connection", (ws) => {
         console.log("connected");
         ws.on("message", (data) => {
-            console.log("data : ", data);
             ExecuteHandlerFunc({
                 ws,
                 data
