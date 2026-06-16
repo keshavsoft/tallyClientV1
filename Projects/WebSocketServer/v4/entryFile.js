@@ -20,7 +20,6 @@ const StartFunc = (server) => {
                 ws,
                 data
             });
-
         });
         ws.on("close", () => {
             console.log("disconnected");

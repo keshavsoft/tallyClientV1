@@ -1,17 +1,18 @@
 import {
-    RegisterHandlerFunc
+    RegisterJsonHandlerFunc,
+    RegisterStringHandlerFunc
 } from "../../../CommonExpose/ToServer/v1/index.js";
 
 const StartFunc = () => {
 
-    RegisterHandlerFunc({
+    RegisterJsonHandlerFunc({
         key: "registerMachine",
         handler: ({ ws, payload }) => {
             console.log(payload.machineId);
         }
     });
 
-    RegisterHandlerFunc({
+    RegisterStringHandlerFunc({
         key: "getLedgerNames",
         handler: ({ ws }) => {
             ws.send("getLedgerNames");

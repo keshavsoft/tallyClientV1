@@ -1,7 +1,12 @@
-const handlers = new Map();
+const jsonHandlers = new Map();
+const stringHandlers = new Map();
 
-const RegisterHandlerFunc = ({ key, handler }) => {
-    handlers.set(key, handler);
+const RegisterJsonHandlerFunc = ({ key, handler }) => {
+    jsonHandlers.set(key, handler);
+};
+
+const RegisterStringHandlerFunc = ({ key, handler }) => {
+    stringHandlers.set(key, handler);
 };
 
 const ExecuteHandlerFunc = ({ ws, data }) => {
@@ -9,16 +14,19 @@ const ExecuteHandlerFunc = ({ ws, data }) => {
 
     let key;
     let payload;
+    let handler;
 
     try {
         payload = JSON.parse(message);
         key = payload.Type;
+        handler = jsonHandlers.get(key);
     } catch {
         payload = message;
         key = message;
-    }
+        console.log("message : ", message);
 
-    const handler = handlers.get(key);
+        handler = stringHandlers.get(key);
+    }
 
     if (handler) {
         handler({ ws, payload });
@@ -26,6 +34,7 @@ const ExecuteHandlerFunc = ({ ws, data }) => {
 };
 
 export {
-    RegisterHandlerFunc,
+    RegisterJsonHandlerFunc,
+    RegisterStringHandlerFunc,
     ExecuteHandlerFunc
 };
